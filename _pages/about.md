@@ -13,6 +13,7 @@ Hi, I'm Aidan, an electrical engineering student at Notre Dame. I’m passionate
 ## Updates
 
 I am excited to announce that I will be joining the SpaceX Starlink team as an Engineering Intern in Redmond, WA for Summer 2024. 
+
 After that, I will be completing my final year in Electrical Engineering at the University of Notre Dame. 
 
 
