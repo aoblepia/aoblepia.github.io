@@ -4,7 +4,7 @@ position: "Hardware Engineering Intern"
 team: "Global Product Development - Electrical Integration"
 collection: experience
 permalink: /experience/general-motors
-date: 2023
+date: 2023-05-15
 date_string: "Summer 2023"
 location: "Warren, MI"
 ---
