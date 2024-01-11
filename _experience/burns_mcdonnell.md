@@ -4,7 +4,8 @@ position: "Electrical Engineering Intern"
 team: "1898 & Co. - Power Systems Consulting"
 collection: experience
 permalink: \burns_mcdonnell.md
-date: "Summer 2021"
+date: 2022
+date_string: "Summer 2022"
 location: "Kansas City, MO"
 ---
 
