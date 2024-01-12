@@ -7,8 +7,6 @@ date: 2022-05-15
 date_string: "Summer 2022"
 collection: experience
 permalink: /experience/burns_mcdonnell
-
-
 ---
 
 At Burns & McDonnell, I worked within the 1898 & Co. global practice in the Utility Consulting division in Kansas City, MO.
