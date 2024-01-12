@@ -1,7 +1,7 @@
 ---
-title: "Teaching Assistant"
+title: "Notre Dame"
 position: "Intro. to Embedded Systems and Internet of Things"
-team: "Electrical Engineering - University of Notre Dame"
+team: "Electrical Engineering Department"
 collection: experience
 permalink: /experience/embedded
 date: 2023-01-01

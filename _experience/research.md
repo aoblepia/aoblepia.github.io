@@ -1,7 +1,7 @@
 ---
-title: "Research Assistant"
-position: "Snider Group"
-team: "Electrical Engineering - University of Notre Dame"
+title: "Notre Dame"
+position: "Research Assistant - Snider Group"
+team: "Electrical Engineering Department"
 collection: experience
 permalink: /experience/research
 date: 2023-08-01

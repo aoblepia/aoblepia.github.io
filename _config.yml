@@ -190,6 +190,9 @@ collections:
   experience:
     output: true
     permalink: /:collection/:path/
+  resume:
+    output: true
+    permalink: /:collection/:path/
 
 
 # Defaults
@@ -252,7 +255,15 @@ defaults:
   # _experience
   - scope:
       path: ""
-      tyle: experience
+      type: experience
+    values:
+      layout: single
+      author_profiles: true
+      share: false
+  # _resume
+  - scope:
+      path: ""
+      type: resume
     values:
       layout: single
       author_profiles: true
