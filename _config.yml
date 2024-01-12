@@ -193,6 +193,9 @@ collections:
   resume:
     output: true
     permalink: /:collection/:path/
+  project:
+    output: true
+    permalink: /:collection/:path/
 
 
 # Defaults
@@ -264,6 +267,14 @@ defaults:
   - scope:
       path: ""
       type: resume
+    values:
+      layout: single
+      author_profiles: true
+      share: false
+  # _project
+  - scope:
+      path: ""
+      type: project
     values:
       layout: single
       author_profiles: true
