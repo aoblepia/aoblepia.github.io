@@ -1,5 +1,5 @@
 ---
-title: "Notre Dame"
+title: "University of Notre Dame"
 position: "Intro. to Embedded Systems and Internet of Things"
 team: "Electrical Engineering Department"
 collection: experience
