@@ -1,10 +1,10 @@
 ---
 title: "SpaceX"
 position: "Engineering Intern - Starlink"
-team: "Gateway Test Engineering
+team: "Gateway Test Engineering"
 collection: experience
 permalink: /experience/spacex
-date: 2024-05-15
+date: 2024-08-15
 date_string: "Summer 2024"
 location: "Redmond, WA"
 ---

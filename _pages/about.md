@@ -12,7 +12,7 @@ Hi, I'm Aidan, an electrical engineering student at Notre Dame. I’m passionate
 
 ## Updates
 
-After a super fun and productive summer in Seattle with SpaceX Starlink, I will be completing my final year in Electrical Engineering at the University of Notre Dame.
+After a great summer in Seattle with SpaceX Starlink, I will be completing my final year in Electrical Engineering at Notre Dame!
 
 
 
