@@ -30,7 +30,7 @@ function loginWithSpotify() {
   const clientId = "1b18fcead5db49a2a6b8cf814411cb01";
   const redirectUri = window.location.href;
   const scopes = "user-read-playback-state user-modify-playback-state streaming";
-  const authUrl = \`https://accounts.spotify.com/authorize?client_id=\${clientId}&response_type=token&redirect_uri=\${encodeURIComponent(redirectUri)}&scope=\${encodeURIComponent(scopes)}\`;
+  const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scopes)}`;
 
   window.location = authUrl;
 }
@@ -42,8 +42,8 @@ function getTokenFromUrl() {
 }
 
 async function fetchPlaylistTracks() {
-  const res = await fetch(\`https://api.spotify.com/v1/playlists/\${PLAYLIST_ID}/tracks\`, {
-    headers: { Authorization: \`Bearer \${token}\` }
+  const res = await fetch(`https://api.spotify.com/v1/playlists/${PLAYLIST_ID}/tracks`, {
+    headers: { Authorization: `Bearer ${token}` }
   });
   const data = await res.json();
   tracks = data.items.map(item => item.track);
@@ -57,13 +57,13 @@ function pickRandomTrack() {
 function updateDisplay(track, userName, index) {
   elements.trackName.textContent = track.name;
   elements.artistName.textContent = "by " + track.artists.map(a => a.name).join(", ");
-  elements.trackNumber.textContent = \`Track \${index + 1}\`;
+  elements.trackNumber.textContent = `Track ${index + 1}`;
   elements.albumArt.src = track.album.images[0].url;
   elements.userName.textContent = "Added by: ???";
 }
 
 function revealUser(userName) {
-  elements.userName.textContent = \`Added by: \${userName}\`;
+  elements.userName.textContent = `Added by: ${userName}`;
   elements.userName.style.color = "#00FFD5";
 }
 
@@ -93,7 +93,7 @@ function playDing() {
 async function playTrack(track) {
   await fetch("https://api.spotify.com/v1/me/player/play", {
     method: "PUT",
-    headers: { Authorization: \`Bearer \${token}\` },
+    headers: { Authorization: `Bearer ${token}` },
     body: JSON.stringify({ uris: [track.uri], position_ms: Math.floor(track.duration_ms / 2) })
   });
 }
