@@ -19,9 +19,12 @@ const elements = {
 };
 
 elements.startButton.addEventListener("click", async () => {
+  console.log("Start button clicked.");
   if (!token) {
+    console.log("No token found, initiating login...");
     loginWithSpotify();
   } else {
+    console.log("Token found, starting Power Hour...");
     startPowerHour();
   }
 });
@@ -32,8 +35,17 @@ function loginWithSpotify() {
   const scopes = "user-read-playback-state user-modify-playback-state streaming";
   const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scopes)}`;
 
+  console.log("Redirecting to Spotify auth:", authUrl);
   window.location = authUrl;
 }
+
+window.onload = () => {
+  token = getTokenFromUrl();
+  console.log("Page loaded. Token:", token);
+  if (token) {
+    elements.startButton.textContent = "Start Power Hour";
+  }
+};
 
 function getTokenFromUrl() {
   const hash = window.location.hash.substring(1);
