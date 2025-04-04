@@ -1,4 +1,6 @@
-// script.js - Full dynamic Power Hour with DOMContentLoaded fix
+// script.js - Full dynamic Power Hour with default URI and robust fetch
+
+const DEFAULT_PLAYLIST_URI = "spotify:playlist:0vQTg4ClycXZ9jyg9gaCHy";
 
 document.addEventListener("DOMContentLoaded", () => {
   let token = getTokenFromUrl();
@@ -26,14 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const snippetInput = document.getElementById("snippet-length");
     const countInput = document.getElementById("number-of-songs");
 
-    if (!playlistInput || !snippetInput || !countInput) {
-      console.error("One or more setup inputs are missing.");
-      return;
-    }
-
-    const playlistURI = playlistInput.value.trim();
-    const snippetLength = parseInt(snippetInput.value);
-    const numberOfSongs = parseInt(countInput.value);
+    const playlistURI = playlistInput?.value.trim() || DEFAULT_PLAYLIST_URI;
+    const snippetLength = parseInt(snippetInput?.value || "20");
+    const numberOfSongs = parseInt(countInput?.value || "60");
 
     if (!token) {
       loginWithSpotify();
@@ -43,8 +40,15 @@ document.addEventListener("DOMContentLoaded", () => {
     setupSection.classList.add("hidden");
     playerSection.classList.remove("hidden");
 
-    await fetchTracks(playlistURI);
-    runPowerHour(snippetLength, numberOfSongs);
+    try {
+      await fetchTracks(playlistURI);
+      runPowerHour(snippetLength, numberOfSongs);
+    } catch (error) {
+      console.error("Error fetching playlist:", error);
+      alert("Failed to load playlist. Please check the URI or your internet connection.");
+      setupSection.classList.remove("hidden");
+      playerSection.classList.add("hidden");
+    }
   });
 
   function loginWithSpotify() {
@@ -64,6 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function fetchTracks(playlistURI) {
     const playlistID = playlistURI.split(":").pop();
+    if (!playlistID) throw new Error("Invalid playlist URI");
     let url = `https://api.spotify.com/v1/playlists/${playlistID}/tracks`;
     tracks = [];
 
@@ -72,13 +77,14 @@ document.addEventListener("DOMContentLoaded", () => {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
+      if (!data.items) throw new Error("No items in playlist response");
       tracks.push(...data.items.map((item) => item.track));
       url = data.next;
     }
   }
 
   function getRandomTrack() {
-    const remaining = tracks.filter((t) => !playedURIs.has(t.uri));
+    const remaining = tracks.filter((t) => t && !playedURIs.has(t.uri));
     if (remaining.length === 0) playedURIs.clear();
     const track = remaining[Math.floor(Math.random() * remaining.length)];
     playedURIs.add(track.uri);
