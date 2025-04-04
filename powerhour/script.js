@@ -16,21 +16,28 @@ const userName = document.getElementById("user-name");
 const trackNum = document.getElementById("track-number");
 const ding = document.getElementById("ding");
 
-startBtn.addEventListener("click", async () => {
-  const playlistURI = document.getElementById("playlist-uri").value.trim();
-  const snippetLength = parseInt(document.getElementById("snippet-length").value);
-  const numberOfSongs = parseInt(document.getElementById("number-of-songs").value);
-
-  if (!token) {
-    loginWithSpotify();
-    return;
+document.addEventListener("DOMContentLoaded", () => {
+  token = getTokenFromUrl();
+  if (token) {
+    startBtn.textContent = "Start Power Hour";
   }
 
-  setupSection.classList.add("hidden");
-  playerSection.classList.remove("hidden");
+  startBtn.addEventListener("click", async () => {
+    const playlistURI = document.getElementById("playlist-uri").value.trim();
+    const snippetLength = parseInt(document.getElementById("snippet-length").value);
+    const numberOfSongs = parseInt(document.getElementById("number-of-songs").value);
 
-  await fetchTracks(playlistURI);
-  runPowerHour(snippetLength, numberOfSongs);
+    if (!token) {
+      loginWithSpotify();
+      return;
+    }
+
+    setupSection.classList.add("hidden");
+    playerSection.classList.remove("hidden");
+
+    await fetchTracks(playlistURI);
+    runPowerHour(snippetLength, numberOfSongs);
+  });
 });
 
 function loginWithSpotify() {
