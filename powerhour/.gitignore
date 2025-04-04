@@ -1,5 +1,3 @@
-_site/
-
 # Node dependencies
 node_modules/
 npm-debug.log*
