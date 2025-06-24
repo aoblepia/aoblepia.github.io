@@ -65,7 +65,7 @@
         `&scope=${encodeURIComponent(SCOPES)}`;
     };
   
-    const defaultNames = ['Nick','John','Molly','Aidan','Abbie','Fergy','Garrett', 'Addi'];
+    const defaultNames = ['Nick','John','Molly','Aidan','Abbie','Fergy','Garrett'];
   
     const getUserName = (origIdx) => {
       // contributor mapping (custom)
