@@ -89,9 +89,9 @@
   .play-btn { width:64px; height:64px; background:var(--accent); color:#fff; border:none; border-radius:50%; font-size:1.5rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all .2s; box-shadow:0 0 30px rgba(255,60,0,.4); }
   .play-btn:hover { transform:scale(1.1); box-shadow:0 0 50px rgba(255,60,0,.6); }
 
-  .shot-counter { position:fixed; bottom:2rem; right:2rem; font-family:'Bebas Neue',sans-serif; z-index:10; text-align:center; }
-  .shot-number { font-size:3.5rem; line-height:1; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-  .shot-label { font-family:'Space Mono',monospace; font-size:.55rem; letter-spacing:.2em; color:var(--muted); text-transform:uppercase; }
+  .round-counter { position:fixed; bottom:2rem; right:2rem; font-family:'Bebas Neue',sans-serif; z-index:10; text-align:center; }
+  .round-number { font-size:3.5rem; line-height:1; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .round-label { font-family:'Space Mono',monospace; font-size:.55rem; letter-spacing:.2em; color:var(--muted); text-transform:uppercase; }
 
   .visualizer { position:fixed; bottom:0; left:0; right:0; height:80px; display:flex; align-items:flex-end; gap:2px; z-index:1; opacity:.35; }
   .viz-bar { flex:1; background:linear-gradient(to top,var(--accent),transparent); border-radius:2px 2px 0 0; animation:viz-anim .5s ease-in-out infinite alternate; }
@@ -176,6 +176,92 @@
   .mode-card .mode-icon { font-size:2.2rem; line-height:1; }
   .mode-card .mode-name { font-family:'Bebas Neue',sans-serif; font-size:1.4rem; letter-spacing:.05em; }
   .mode-card .mode-desc { font-size:.75rem; color:var(--muted); line-height:1.4; }
+
+  /* ===================== MOBILE ===================== */
+  @media (max-width: 600px) {
+
+    /* WELCOME */
+    #welcome { gap:1.25rem; padding:1.5rem; }
+    .logo { font-size:clamp(4rem,22vw,6rem); }
+    .tagline { font-size:.6rem; letter-spacing:.15em; }
+    .spotify-connect-btn { padding:.85rem 1.75rem; font-size:.9rem; }
+    .continue-btn { padding:.85rem 1.75rem; font-size:.9rem; width:100%; }
+    #welcome-actions { max-width:100%; }
+
+    /* PICKER */
+    #picker { padding:1rem 1rem 1.5rem; gap:1rem; }
+    .screen-title { font-size:2rem; }
+    .playlist-grid { grid-template-columns:1fr; max-height:38vh; }
+    .playlist-thumb { width:44px; height:44px; }
+    .playlist-name { font-size:.82rem; }
+
+    /* MODE CARDS */
+    .mode-cards { gap:.6rem; max-width:100%; }
+    .mode-card { padding:1rem .75rem; gap:.4rem; border-radius:12px; }
+    .mode-card .mode-icon { font-size:1.6rem; }
+    .mode-card .mode-name { font-size:1.1rem; }
+    .mode-card .mode-desc { font-size:.65rem; }
+
+    /* ASSIGN */
+    #assign { padding:1rem 1rem 1.5rem; gap:1rem; }
+    .track-list { max-height:45vh; }
+    .track-row { padding:.5rem .65rem; gap:.6rem; }
+    .track-art { width:36px; height:36px; }
+    .track-name { font-size:.8rem; }
+    .track-artist { font-size:.65rem; }
+    .track-user-input { width:85px; font-size:.72rem; padding:.35rem .5rem; }
+
+    /* PLAYER */
+    .top-bar { padding:1rem 1.25rem; }
+    .top-logo { font-size:1.4rem; }
+    .round-badge { font-size:.55rem; }
+    .player-content { padding:1rem; padding-top:5rem; padding-bottom:7rem; justify-content:space-evenly; }
+    .art-container { margin-bottom:1rem; }
+    #album-art { width:min(220px,60vw); height:min(220px,60vw); }
+    .song-info { margin-bottom:1rem; }
+    #song-title { font-size:clamp(1.6rem,7vw,2.5rem); }
+    #song-artist { font-size:.82rem; }
+    .progress-area { width:90vw; margin-bottom:1rem; }
+    .controls { gap:1.25rem; }
+    .play-btn { width:56px; height:56px; font-size:1.3rem; }
+    .ctrl-btn { font-size:1.1rem; }
+
+    /* Reveal card - prevent it going off screen */
+    #reveal-card { min-width:min(280px,88vw); bottom:auto; top:50%; transform:translateX(-50%) translateY(-40%); }
+    #reveal-card.visible { transform:translateX(-50%) translateY(-50%); }
+
+    /* Shot counter - smaller on mobile */
+    .round-counter { bottom:1.25rem; right:1.25rem; }
+    .round-number { font-size:2.5rem; }
+    .round-label { font-size:.45rem; }
+
+    /* Spotify bar */
+    #spotify-bar { bottom:5rem; font-size:.65rem; padding:.4rem .9rem; }
+
+    /* Settings panel - full width on mobile */
+    #settings-panel { width:100%; right:-100%; border-left:none; border-top:1px solid #1e1e1e; padding:1.5rem 1.25rem; }
+    #settings-panel.open { right:0; }
+    input[type=range] { width:100%; }
+    .setting-row { flex-wrap:wrap; gap:.5rem; }
+
+    /* Buttons */
+    .btn-primary { padding:.85rem 1.5rem; font-size:.9rem; }
+    .btn-ghost { padding:.7rem 1.5rem; font-size:.85rem; }
+
+    /* Toast - don't let it overflow */
+    #toast { white-space:normal; text-align:center; width:88vw; border-radius:12px; font-size:.78rem; }
+  }
+
+  /* Tall-but-narrow phones (e.g. iPhone SE) */
+  @media (max-width: 600px) and (max-height: 700px) {
+    .logo { font-size:clamp(3rem,18vw,4.5rem); }
+    #album-art { width:min(170px,50vw); height:min(170px,50vw); }
+    .art-container { margin-bottom:.5rem; }
+    .song-info { margin-bottom:.5rem; }
+    .progress-area { margin-bottom:.5rem; }
+    .playlist-grid { max-height:30vh; }
+    .track-list { max-height:38vh; }
+  }
 </style>
 </head>
 <body>
@@ -186,7 +272,7 @@
 <!-- WELCOME -->
 <div class="screen" id="welcome">
   <div class="logo">Power<br>Hour</div>
-  <p class="tagline">🍺 &nbsp; Shuffle · Reveal · Drink &nbsp; 🍺</p>
+  <p class="tagline">Shuffle · Reveal · Play</p>
   <div id="welcome-actions" style="display:flex;flex-direction:column;align-items:center;gap:1rem;width:100%;max-width:320px;">
     <button class="spotify-connect-btn" id="login-btn" onclick="loginWithSpotify()">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
@@ -223,7 +309,7 @@
         <div class="mode-desc">Tag who added each song — revealed mid-round</div>
       </div>
       <div class="mode-card" id="mode-normal" onclick="selectMode('normal')">
-        <div class="mode-icon">🍺</div>
+        <div class="mode-icon">🎵</div>
         <div class="mode-name">Normal</div>
         <div class="mode-desc">Classic power hour — just music &amp; vibes</div>
       </div>
@@ -239,7 +325,7 @@
   <h1 class="screen-title">Who Added What?</h1>
   <p style="color:var(--muted);font-size:.85rem;text-align:center;">Tag each song — their name is revealed mid-round</p>
   <div class="track-list" id="track-list"></div>
-  <button class="btn-primary" onclick="startGame()">Start Power Hour 🍺</button>
+  <button class="btn-primary" onclick="startGame()">Start Power Hour</button>
   <button class="btn-ghost" onclick="showScreen('picker')">← Back</button>
 </div>
 
@@ -275,10 +361,10 @@
   <div id="reveal-card">
     <div class="reveal-label">🎵 Added by</div>
     <div class="reveal-name" id="reveal-name">—</div>
-    <div class="reveal-sub" id="reveal-sub">TAKE A SHOT!</div>
+    <div class="reveal-sub" id="reveal-sub">🎵 Round Complete</div>
   </div>
   <div id="spotify-bar"><div class="spotify-dot"></div><span>Streaming on Spotify</span></div>
-  <div class="shot-counter"><div class="shot-number" id="shot-count">0</div><div class="shot-label">shots</div></div>
+  <div class="round-counter"><div class="round-number" id="shot-count">0</div><div class="round-label">rounds</div></div>
   <div class="visualizer" id="visualizer"></div>
 </div>
 
@@ -347,7 +433,7 @@
     </div>
     <div class="setting-row">
       <div><div class="setting-name">Reveal Message</div></div>
-      <select id="reveal-msg"><option>TAKE A SHOT!</option><option>DRINK UP! 🍺</option><option>CHUG! CHUG!</option><option>BOTTOMS UP!</option></select>
+      <select id="reveal-msg"><option>🎵 Round Complete!</option><option>Next Round!</option><option>Keep Going!</option><option>That's a Wrap!</option></select>
     </div>
   </div>
   <div class="settings-section">
@@ -361,9 +447,16 @@
 <script>
 // ==================== CONFIG ====================
 const CLIENT_ID = '1b18fcead5db49a2a6b8cf814411cb01';
-const REDIRECT_URI = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost'
-  ? 'http://127.0.0.1:8888/callback'
-  : 'https://aoblepia.github.io/power-hour/callback.html';
+// Dynamically build the redirect URI from the current page's origin + path
+// Works on any domain, localhost, GitHub Pages, or custom domain — no hardcoding
+const REDIRECT_URI = (() => {
+  const loc = window.location;
+  // Get the directory path of the current page (strips index.html if present)
+  const dir = loc.pathname.endsWith('/')
+    ? loc.pathname
+    : loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
+  return `${loc.protocol}//${loc.host}${dir}callback.html`;
+})();
 const SCOPES = 'streaming user-read-email user-read-private user-read-playback-state user-modify-playback-state playlist-read-private playlist-read-collaborative';
 
 let accessToken = null;
@@ -459,7 +552,7 @@ function loadSDK() {
 
 window.onSpotifyWebPlaybackSDKReady = () => {
   spotifyPlayer = new Spotify.Player({
-    name: 'Power Hour 🍺',
+    name: 'Power Hour',
     getOAuthToken: cb => {
       const expiry = +localStorage.getItem('sp_expiry') || 0;
       if (Date.now() > expiry - 60000) refreshToken().then(() => cb(accessToken));
@@ -571,7 +664,7 @@ async function selectPlaylist(id, el) {
     const autoCount = playlistTracks.filter(t => t.addedByName).length;
     showToast(`${playlistTracks.length} tracks loaded — ${autoCount} players auto-assigned ✓`);
     const btn = document.getElementById('pick-btn');
-    btn.textContent = gameMode === 'social' ? 'Assign Players →' : 'Start Power Hour 🍺';
+    btn.textContent = gameMode === 'social' ? 'Assign Players →' : 'Start Power Hour';
   } catch(e) { showToast('Error: ' + e.message); console.error(e); }
 }
 
@@ -632,7 +725,7 @@ function selectMode(mode) {
   document.getElementById('mode-normal').classList.toggle('active', mode === 'normal');
   // Update button label
   const btn = document.getElementById('pick-btn');
-  if (!btn.disabled) btn.textContent = mode === 'social' ? 'Assign Players →' : 'Start Power Hour 🍺';
+  if (!btn.disabled) btn.textContent = mode === 'social' ? 'Assign Players →' : 'Start Power Hour';
 }
 
 function handlePickBtn() {
